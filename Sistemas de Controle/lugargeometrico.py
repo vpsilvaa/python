@@ -1,17 +1,18 @@
 import control
 import matplotlib.pyplot as plt
 
+k=200
 num = [1]
-den = [1, 12, 32]
+den = [1, 4, 0]
 
 G1 = control.tf(num,den)
-GPD = control.tf([1, 3],[1])
+GPD = control.tf(k,[1, 15])
 
 #Como obter as raízes do denominador
-control.rlocus(G1*GPD)
+control.rlocus(G1)
 
 #Plotar a linha de \zeta
-zeta = 0.707
+zeta = 0.5
 
 #fator de amortecimento
 px = 20     #ponto em x no terceiro quadrante onde finaliza a reta
