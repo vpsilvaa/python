@@ -6,7 +6,7 @@
 ## �� Info
 <div>
   
-  Linkedin: https://www.linkedin.com/in/vitorpires/
+  Linkedin: [Vitor Pires](https://www.linkedin.com/in/vitorpires/)
   
 </div>
 
