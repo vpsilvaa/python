@@ -3,7 +3,7 @@
  Codes in Python with a focus on data science and machine learning. It also has some projects focused on Object Oriented Programming and others
  </p>
 
-## �� Imagens do dataset
+## �� Info
 <div>
   
   Linkedin: https://www.linkedin.com/in/vitorpires/
