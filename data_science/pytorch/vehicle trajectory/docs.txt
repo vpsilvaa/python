@@ -1,0 +1,5 @@
+dataset KITTI: https://drive.google.com/file/d/1Jg8FPCxGPckXMNSlTybxFu5unZCFuW9h/view
+
+ground_truth.npy: https://drive.google.com/file/d/10rYRFQAi1AlJDSWAoZK7-SX0D8Kr2oDM/view
+
+cvlibs: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
