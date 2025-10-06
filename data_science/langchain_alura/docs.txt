@@ -1,0 +1,107 @@
+<h1>*A evolução constante da IA Generativa*</h1>
+
+A tecnologia de IA Generativa está em constante movimento: desta forma, implementações que são um padrão de API hoje podem estar defasadas amanhã. Esse dinamismo se reflete diretamente 
+nos frameworks que utilizamos para criar fluxos de trabalho mais complexos com modelos de linguagem. O LLMChain, por exemplo, foi descontinuado em versões mais recentes do LangChain, 
+dando lugar a uma abordagem mais flexível, escalável e eficiente, conhecida como LCEL (LangChain Expression Language).
+
+A mudança não é apenas técnica: ela simboliza uma maturidade crescente, em que bibliotecas e ferramentas buscam otimização de recursos, melhor leitura de fluxos e maior aderência a 
+boas práticas. Essas transições tecnológicas reforçam a ideia de que compreender bem os fundamentos é um passo importante para sua carreira DEV e que as linguagens de programação,
+frameworks e ferramentas, são instrumentos que nos ajudam a resolver problemas.
+
+Por que migrar do LLMChain para o LCEL?
+- Melhor orquestração: O LCEL permite definir processos de maneira declarativa, descrevendo o que deve ser feito, não como. Isso facilita o entendimento do fluxo e a manutenção do código.
+- Maior flexibilidade: Por ser construído sobre o conceito de Runnables, o LCEL oferece suporte nativo a paralelismo, execução assíncrona e streaming de resultados. Essas melhorias 
+vão muito além das capacidades originais do LLMChain.
+- Entendendo a depreciação do LLMChain
+- Esse processo de depreciação é natural em ecossistemas de rápido avanço: o que já foi considerado “estado da arte” dá lugar a práticas mais modernas.
+
+No caso do LLMChain, sua limitação estava na linearidade e na dificuldade em lidar com execuções complexas. Agora, com o LCEL, temos:
+
+- Orquestração declarativa: Você descreve o fluxo desejado, e o LangChain otimiza a execução.
+- Melhor desempenho: Com suporte a execuções paralelas, processos assíncronos e gerenciamento de estado mais simples.
+- Maior clareza: A orquestração se torna mais transparente, facilitando a compreensão do que acontece a cada passo da cadeia de processamento.
+
+Características principais do LCEL
+- Suporte a streaming: melhora o tempo até a primeira saída, sendo ideal para processamento em tempo real.
+- Suporte assíncrono: permite execução tanto síncrona quanto assíncrona, adequada para prototipagem e produção.
+- Execução paralela otimizada: executa etapas paralelas automaticamente para reduzir a latência.
+- Retentativas e alternativas: melhora a confiabilidade em escala com configurações de retentativa e alternativa.
+- Acesso a resultados intermediários: permite monitoramento e depuração em cadeias complexas.
+- Esquemas de entrada e saída: facilita a validação com esquemas Pydantic e JSONSchema.
+- Integração com Langsmith e Langserve: oferece observabilidade e facilita a implantação.
+
+<h2>Zero-shot learning</h2>
+No zero-shot learning, o prompt é fornecido sem nenhum exemplo anterior. O modelo usa o conhecimento pré-existente para responder à pergunta ou cumprir a tarefa. É útil quando se 
+deseja uma resposta direta do modelo sem influenciar sua resposta com exemplos anteriores.
+
+<h2>One-shot learning</h2>
+One-shot learning envolve fornecer um único exemplo para o modelo antes de fazer a pergunta. Isso ajuda o modelo a entender o contexto ou o formato da resposta esperada. 
+É particularmente útil para orientar o modelo sobre como responder de maneira específica.
+
+<h2>Few-shot learning</h2>
+Few-shot learning, exemplificado pelo código abaixo, utiliza múltiplos exemplos para guiar o modelo na produção de respostas. Isso é especialmente útil para tarefas complexas, 
+em que vários exemplos podem ajudar o modelo a compreender melhor a tarefa e gerar resultados mais precisos.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+from langchain.prompts.few_shot import FewShotPromptTemplate
+from langchain.prompts.prompt import PromptTemplate
+from langchain_openai import ChatOpenAI
+import os
+
+os.environ['OPENAI_API_KEY'] = 'sua_chave_api'
+llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0.5, api_key=os.getenv("OPENAI_API_KEY"))
+
+examples = [
+    {
+        "question": "Quem viveu mais, Muhammad Ali ou Alan Turing?",
+        "answer": """
+        São necessárias perguntas de acompanhamento: Sim.
+        Pergunta: Quantos anos Muhammad Ali tinha quando morreu?
+        Resposta intermediária: Muhammad Ali tinha 74 anos quando morreu.
+        Pergunta: Quantos anos Alan Turing tinha quando morreu?
+        Resposta intermediária: Alan Turing tinha 41 anos quando morreu.
+        Então a resposta final é: Muhammad Ali
+        """,
+    },
+    # Outros exemplos aqui...
+]
+
+example_prompt = PromptTemplate(
+    input_variables=["question", "answer"], template="Pergunta: {question}\n{answer}"
+)
+
+prompt_template = FewShotPromptTemplate(
+    examples=examples,
+    example_prompt=example_prompt,
+    suffix="Pergunta: {input}",
+    input_variables=["input"],
+)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+prompt = prompt_template.format(input="Quem foi o pai de Mary Ball Washington?")
+resposta = llm.invoke(prompt)
+print(resposta)
+
+Embeddings são representações numéricas de texto que permitem medir quão relacionados estão os diferentes pedaços de um documento. Eles são fundamentais em diversas aplicações de 
+processamento de linguagem natural (PLN), como busca por relevância, agrupamento de textos por similaridade, sistemas de recomendação, detecção de anomalias, medição de diversidade 
+textual e classificação automática de conteúdo.
+
+Um gerador de embedding transforma uma string de texto em um vetor de números de ponto flutuante. A distância (geralmente medida por similaridade de cosseno ou distância euclidiana) 
+entre dois vetores de embedding reflete quão relacionados ou semelhantes são os textos originais.
+
+Textos com significados ou contextos similares resultarão em vetores próximos uns dos outros no espaço de embeddings, enquanto textos com pouca ou nenhuma relação terão vetores 
+distantes.
+
+
+<h1>*Ponto importantes*</h1>
+- Como implementar uma cadeia simples para obter um roteiro de viagens com o SimpleSequentialChain.
+- Como processar a saída de modelos, com o JsonOutputParser para garantir que a resposta de um modelo seja a adequada.
+- Implementar uma versão de um criador de roteiros de viagem utilizando LCEL, com LangChain e o GPT 3.5 da OpenAI.
+- Gerenciar as saídas de uma cadeia sequencial, utilizando LCEL para gerar um roteiro de viagens.
+- Como gerenciar o histórico de uma conversa, usando um recurso de memória do LangChain para acessar mensagens utilizadas em outras etapas de diálogo com um LLM.
+- Como especificar um tamanho de janela para garantir que apenas k mensagens sejam consideradas em uma conversa com um LLM, utilizando LangChain.
+- Como sumarizar um histórico para reduzir custos e garantir que os temas mais importantes sejam armazenados em uma conversa com um LLM, utilizando LangChain.
+- Carregar arquivos de texto em uma cadeia do LangChain para que seja possível consultar documentos simples no processo de construção de respostas.
+- Carregar arquivos no formato .pdf em uma cadeia do LangChain para gerar respostas a partir de consultas em documentos simples.
+- Carregar múltiplos arquivos .pdf em uma cadeia do LangChain e utilizar o RetrievalQA para responder com base em documentos.
