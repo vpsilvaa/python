@@ -1,0 +1,127 @@
+O desenvolvimento de um agente digital especializado em saúde, como um assistente para informações a respeito da dengue, requer a integração de tecnologias avançadas para buscar e 
+recuperar informações precisas. Este segmento aborda como configurar e utilizar ferramentas dentro da plataforma LangChain para construir um sistema eficaz e informativo.
+
+## 1. Configuração de rastreamento com LangSmith
+Para assegurar uma implementação eficaz de agentes inteligentes, o LangSmith oferece capacidades de rastreamento que permitem uma observação detalhada das ações do agente. 
+Isso é crucial para depuração e compreensão do processo de decisão do agente frente às consultas dos usuários.
+
+## 2. Ferramentas de agente: pesquisa e recuperação
+No caso do Assistente DengueInfo, é essencial incorporar duas categorias de ferramentas:
+
+    - Ferramenta de pesquisa online: esta ferramenta, como o TavilySearch, já está disponível nos repositórios da comunidade LangChain. Ela permite ao agente realizar buscas em 
+    tempo real para obter informações atualizadas, essencial para manter a relevância das informações sobre saúde.
+    - Ferramenta de recuperação de dados (DengueRetriever): para esta funcionalidade, a pessoa desenvolvedora precisará criar uma ferramenta personalizada que configure um índice 
+    local contendo dados relevantes, como artigos e diretrizes do Ministério da Saúde. Este índice permitirá ao agente acessar rapidamente informações verificadas e de confiança.
+
+## 3. Implementação e execução do agente
+Configurar o agente envolve utilizar um modelo de processamento de linguagem natural (LLM) para interpretar consultas e decidir a melhor ferramenta para responder. Este processo é 
+fundamental para garantir que o agente possa operar de maneira eficaz, fornecendo respostas precisas com base nas ferramentas disponíveis.
+
+## 4. Vantagens do Assistente DengueInfo
+O uso de agentes como o Assistente DengueInfo traz vantagens significativas, por exemplo, a confiabilidade das informações fornecidas, a acessibilidade aumentada para informações 
+vitais de saúde pública e a capacidade de adaptação a novas informações e diretrizes.
+
+## 5. O papel do não determinismo
+Inteligências artificiais generativas, especialmente modelos como GPT-4, são projetadas para oferecer uma variedade de respostas para a mesma entrada. Esta característica, conhecida 
+como não determinismo, é crucial para aplicações que se beneficiam da geração de conteúdo criativo e variado, mas também introduz desafios em consistência e previsibilidade.
+
+O não determinismo em IA generativa permite que modelos aprendam padrões complexos de dados e gerem respostas que não são exatamente previsíveis a cada execução. Isto é 
+particularmente útil em tarefas de brainstorming, composição de conteúdo artístico e solução criativa de problemas. No entanto, pode ser um desafio quando a consistência é necessária, 
+como em aplicações de atendimento ao cliente ou em ambientes regulados.
+
+## 6. LangChain e o gerenciamento de não determinismo
+LangChain é uma plataforma que facilita a construção de aplicações com IAs de linguagem, oferecendo ferramentas que podem ajudar a gerenciar o não determinismo. 
+Por exemplo, LangChain permite a configuração de prompts estruturados e a utilização de ferramentas de correção que podem ajudar a guiar as respostas da IA para serem mais 
+consistentes e alinhadas com as expectativas do usuário.
+
+#### Exemplos práticos
+    1. Variação nas respostas de geração de texto:
+
+    Entrada: "Dê-me uma ideia para um jantar rápido."
+    Saída 1: "Que tal preparar um macarrão com molho pesto e salada de rúcula?"
+    Saída 2: "Você pode fazer uma omelete com vegetais frescos e torradas."
+    Cada resposta é útil e relevante, mas varia significativamente, demonstrando o não determinismo.
+
+    2. Aplicação em LangChain:
+
+    - Uso de prompts detalhados: configurando um prompt para especificar o tipo de culinária, por exemplo, "Dê-me uma ideia para um jantar rápido italiano”.
+    - Resultado: A especificação no prompt limita as respostas ao contexto da culinária italiana, como "Espaguete ao alho e óleo."
+
+## 7. Técnicas para controlar o não determinismo
+
+- Ajuste de temperatura: alterar a "temperatura" de um modelo de IA pode ajudar a controlar a aleatoriedade das respostas. Uma temperatura mais baixa geralmente resulta em 
+respostas mais previsíveis e menos variadas.
+- Prompts detalhados: utilizar prompts mais detalhados e específicos pode limitar a gama de respostas possíveis, conduzindo o modelo a um conjunto de respostas mais desejáveis e 
+relevantes.
+- Pós-processamento: técnicas de pós-processamento podem ser aplicadas para filtrar ou ajustar as respostas da IA antes de serem apresentadas ao usuário, garantindo maior consistência.
+
+## 8. Discussão e implicações
+
+O não determinismo é uma faca de dois gumes que oferece tanto oportunidades quanto desafios. Pessoas desenvolvedoras e usuárias de IAs generativas devem estar cientes das 
+implicações do não determinismo e considerar métodos para mitigá-lo conforme necessário.
+
+## 9. ReAct
+    ReAct é uma metodologia avançada que integra as habilidades de raciocínio e ação em modelos de linguagem para criar interações mais dinâmicas e precisas. Essa abordagem permite que 
+    os modelos não só compreendam questões complexas, mas também interajam ativamente com informações e ambientes externos.
+
+    Abordagem e metodologia
+    O framework ReAct promove uma fusão entre raciocínio detalhado e ações práticas dentro de um fluxo de trabalho interativo, permitindo que modelos de linguagem atuem de forma 
+    adaptativa e contextual. Esse método é particularmente valioso em domínios que exigem verificação de fatos e respostas informadas por dados atualizados.
+
+    Exemplo prático: busca de informações para universidades
+    Cenário
+    Um usuário está interessado em descobrir quais universidades oferecem os melhores programas de engenharia mecânica e como seus alunos se saem após a graduação.
+
+    Linha de raciocínio com ReAct
+    - Identificação da necessidade: o agente determina a necessidade de informações detalhadas sobre programas de engenharia mecânica e as taxas de sucesso dos graduados.
+    - Busca de rankings acadêmicos: o agente busca rankings para identificar os programas de engenharia mecânica de maior prestígio.
+    - Verificação de taxas de sucesso dos graduados: após identificar as universidades, o agente procura informações sobre as taxas de emprego dos graduados desses programas.
+    - Compilação e apresentação de informações: o agente compila os dados coletados em uma resposta coesa, proporcionando uma visão geral informativa e útil para o usuário.
+
+## 10. Riscos associados ao uso de código gerado por IA
+É crucial notar que permitir que um agente execute código Python gerado automaticamente pode introduzir riscos, especialmente se o código não for verificado adequadamente antes da 
+execução. Esse código pode ser prejudicial ou introduzir erros significativos se não for gerenciado com cuidado. Portanto, o uso desses agentes deve ser feito com cautela.
+
+## 11. Configurações do agente para interagir com CSV
+Os agentes podem ser configurados para interagir com arquivos CSV usando diferentes tipos de configuração de agentes dentro do framework LangChain:
+
+    - ZERO_SHOT_REACT_DESCRIPTION: este tipo de agente é inicializado com descrições de tarefas e pode operar com pouca ou nenhuma informação prévia sobre a estrutura dos dados.
+    - OPENAI_FUNCTIONS: esta configuração permite que o agente utilize funções especializadas para executar tarefas mais complexas e específicas com os dados.
+
+#### Exemplos de perguntas e respostas com dados CSV
+Os agentes podem executar uma variedade de tarefas com dados CSV, como contar linhas, filtrar dados baseados em condições específicas e calcular estatísticas:
+
+    - Contagem de linhas: perguntar "quantas linhas existem?" permite ao agente determinar o tamanho do DataFrame.
+    - Filtragem condicional: perguntas como "quantas pessoas têm mais de três irmãos?" exigem que o agente aplique filtros condicionais para contar entradas específicas.
+    - Cálculos estatísticos: questionamentos sobre "qual é a raiz quadrada da idade média?" levam o agente a realizar cálculos matemáticos para responder de forma precisa.
+
+## 12. Interagindo com múltiplos arquivos CSV
+Um agente também pode ser configurado para interagir com múltiplos arquivos CSV simultaneamente, permitindo comparações e análises entre diferentes conjuntos de dados. 
+Por exemplo, comparar diferenças nas colunas de idade entre dois arquivos CSV pode ajudar a identificar discrepâncias ou erros de dados.
+
+## Pontos importantes:
+
+- Desenvolver uma funcionalidade de perfil acadêmico usando classes e herança em Python.
+- Implementar e testar um método run para executar a ferramenta.
+- Integrar e registrar a nova ferramenta no sistema LLM.
+- Realizar operações complexas, como comparar perfis de estudantes.
+- Especificar claramente as capacidades e limitações das ferramentas.
+- Debugar e ajustar o código para corrigir problemas e assegurar a precisão.
+- Revisar e ajustar prompts para obter os resultados esperados.
+- Validar resultados para evitar respostas incorretas ou inventadas pela LLM.
+- Importância de rodar múltiplas execuções para selecionar o melhor resultado em processos não determinísticos.
+- Utilizar agentes em LLMs para decidir qual ferramenta usar em cada etapa do processo.
+- Criar e configurar múltiplas ferramentas para agentes LLM, como buscar informações na internet e realizar cálculos.
+- Utilizar técnicas de engenharia de prompt, isolando conteúdos relevantes para melhorar a precisão das respostas da LLM.
+- Validar manualmente os resultados finais das LLMs para garantir precisão.
+- Definir pontos de parada em processos com a ferramenta return direct igual a true.
+- Parametrizar ferramentas para que sua execução possa finalizar o agente, evitando tarefas subsequentes.
+- Observar a funcionalidade do parâmetro return direct e como ele impacta a execução de agentes.
+- Criar e manipular dados de universidades em um novo arquivo Python.
+- Carregar informações de um arquivo CSV e realizar queries ignorando maiúsculas e minúsculas usando a biblioteca Pandas.
+- Implementar funções para buscar dados específicos e gerais de universidades.
+- Criar ferramentas em forma de classes que herdam de BasicTool.
+- Utilizar o JSONOutputParser e configurar prompt templates.
+- Ajustar o código para lidar com inconsistências de entrada de dados.
+- Formular perguntas complexas e entender o impacto dos detalhes na interpretação da LLM.
+- Registrar e testar novas ferramentas desenvolvidas no sistema.
